@@ -15,13 +15,13 @@ resource "aws_instance" "example" {
 
 resource "null_resource" "copy_file_on_vm" {
   depends_on = [
-    aws_instance.nosoymag
+    aws_instance.example
   ]
   connection {
     type        = "ssh"
     user        = "ubuntu"
     private_key = file("${path.module}/tf_ec2_key.pem")
-    host        = aws_instance.nosoymag.public_dns
+    host        = aws_instance.example.public_dns
   }
   provisioner "file" {
     source      = "${path.module}/init.sh"
