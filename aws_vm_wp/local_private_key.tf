@@ -10,6 +10,7 @@ resource "local_file" "tf_ec2_key" {
   filename = "${path.module}/tf_ec2_key.pem"
 }
 
+
 # Create AWS key pair
 resource "aws_key_pair" "tf_ec2_key" {
   key_name   = "tf_ec2_key"
