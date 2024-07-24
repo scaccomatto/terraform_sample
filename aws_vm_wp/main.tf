@@ -18,7 +18,7 @@ resource "aws_instance" "example" {
       host        = self.public_ip
       type        = "ssh"
       user        = "ubuntu"
-      private_key =  local_file.tf_ec2_key.filename
+      private_key =  file(local_file.tf_ec2_key.filename)
     }
   }
   provisioner "remote-exec" {
@@ -31,9 +31,9 @@ resource "aws_instance" "example" {
       host        = self.public_ip
       type        = "ssh"
       user        = "ubuntu"
-      private_key = local_file.tf_ec2_key.filename
+      private_key = file(local_file.tf_ec2_key.filename)
     }
   }
-  depends_on = [local_file.tf_ec2_key]
+  depends_on = [local_file.tf_ec2_key, aws_key_pair.tf_ec2_key,aws_security_group.example_security_group]
 }
 

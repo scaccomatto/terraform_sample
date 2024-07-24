@@ -5,7 +5,7 @@ echo "just a simple example on how to install wordpress in a aws vm"
 sudo apt-get update
 
 # apache
-sudo apt-get install apache2 -y
+sudo apt update && sudo apt install -y apache2
 sudo systemctl stop apache2.service
 sudo systemctl start apache2.service
 sudo systemctl enable apache2.service
